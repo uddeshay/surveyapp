@@ -7,14 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ MongoDB connection
+//  MongoDB connection
 mongoose.connect('mongodb://127.0.0.1:27017/surveydatabase', {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.log('❌ DB connection error:', err));
+}).then(() => console.log(' MongoDB connected'))
+  .catch(err => console.log(' DB connection error:', err));
 
-// ✅ Survey Schema and Model
+//  Survey Schema and Model
 const surveySchema = new mongoose.Schema({
   sessionId: String,
   answers: Object,
@@ -23,7 +23,7 @@ const surveySchema = new mongoose.Schema({
 });
 const Survey = mongoose.model('Survey', surveySchema);
 
-// ✅ POST API to receive survey data
+//  POST API to receive survey data
 app.post('/api/survey', async (req, res) => {
   try {
     const survey = new Survey(req.body);
@@ -34,8 +34,8 @@ app.post('/api/survey', async (req, res) => {
   }
 });
 
-// ✅ Start the server
+//  Start the server
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(` Server running on http://localhost:${PORT}`);
 });
